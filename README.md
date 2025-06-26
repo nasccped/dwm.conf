@@ -81,6 +81,14 @@ rm -rf .git/
 make clean && sudo make install # you should be a super user + set your password
 ```
 
+4. Add this to your `.xinitrc` (if it doesn't exists, create one):
+
+```txt
+exec dwm
+```
+
+And now, you can run `startx` at your TTY and see the actual program!
+
 ## Changes that I've made
 
 - use `Win` as **ModKey**
