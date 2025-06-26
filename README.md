@@ -3,6 +3,15 @@ dwm conf
 
 Welcome to my personal config for DWM Window Manager 🪟
 
+> [!NOTE]
+>
+> I'm not the owner of this projet. It was forked from
+> https://git.suckless.org/dwm and you can find the original readme
+> (`README.old.txt`) and the license (`LICENSE`) as well.
+>
+> This page bellow was written by me. Its documents the requirements,
+> cloning and installing the program (and changes that I've done).
+
 ## What's DWM?
 
 [DWM](https://dwm.suckless.org/) is a dynamic window manager for X.
