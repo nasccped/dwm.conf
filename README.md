@@ -89,6 +89,52 @@ exec dwm
 
 And now, you can run `startx` at your TTY and see the actual program!
 
+### Some good tips
+
+#### Display
+
+This can differ from computer to computer, so, follow these steps
+wisely:
+
+1. Open your dwm client (it's import to have a terminal emulator
+   already setted):
+```sh
+startx
+```
+
+2. Open your terminal emulator (`Shift` + `ModKey` + `Return` by
+   default) and run the following command to see all available
+   display outputs:
+```sh
+xrandr
+```
+
+3. Find the mode that works for you (`1920x1080` res. + `60Hz` rate
+   in my case)
+
+4. Set xrandr mode in `.xinitrc` before calling `dwm`:
+
+```txt
+# the --output flag should receive the current screen being displayed
+# (it can differ from computer to computer)
+xrandr --output Virtual-1 --mode 1920x1080 --rate 60
+```
+
+#### Keyboard layout
+
+The keyboard layout defined at Xorg client is different from the TTY
+layout. You'll need to set your keyboard-layout to Xorg client in
+`.xinitrc` too (`br-abnt2` in my case):
+
+```txt
+stxkbmap -layout br -variant abnt2
+```
+
+> [!TIP]
+>
+> If you don't know yours, you can google it (it's common to all
+> computers from the same country follow the same keyboard layout) 😉
+
 ## Changes that I've made
 
 - use `Win` as **ModKey**
