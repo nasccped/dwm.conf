@@ -138,3 +138,4 @@ stxkbmap -layout br -variant abnt2
 ## Changes that I've made
 
 - use `Win` as **ModKey**
+- use `alwayscenter` patch (center windows when floating)
