@@ -139,3 +139,12 @@ stxkbmap -layout br -variant abnt2
 
 - use `Win` as **ModKey**
 - use `alwayscenter` patch (center windows when floating)
+- use `splitstatus` for status root name spliting (mid + right). My
+  personal rootname config (in `.xinitrc`) is:
+```txt
+while xsetroot -name "`date '+%H:%M'`;`date '+| %A | %b %d, %Y'` "
+do
+  sleep 60
+done &
+exec dwm
+```
