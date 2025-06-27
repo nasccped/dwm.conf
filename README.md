@@ -148,3 +148,5 @@ do
 done &
 exec dwm
 ```
+- use `bar height` for changing, well, the bar height (you can
+  reset it by defining `user_bh` as `0` in `config.def.h`)
