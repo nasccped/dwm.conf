@@ -142,11 +142,44 @@ stxkbmap -layout br -variant abnt2
 - use `splitstatus` for status root name spliting (mid + right). My
   personal rootname config (in `.xinitrc`) is:
 ```txt
-while xsetroot -name "`date '+%H:%M'`;`date '+| %A | %b %d, %Y'` "
+get_time() {
+  date "+%H:%M"
+}
+
+get_weekname() {
+  date "+%A"
+}
+
+get_date() {
+  date "+%b %d, %Y"
+}
+
+get_battery() {
+  local maxbars=4
+  local capacity=$(cat /sys/class/power_supply/BAT*/capacity)
+  local filled=$((capacity * maxbars / 100))
+  local symbol=""
+  case "$(cat /sys/class/power_supply/BAT*/status)" in
+    D*) symbol="-";;
+    C*) symbol="+";;
+    *) symbol="?";;
+  esac
+
+  printf "%s [%-${maxbars}s] %3d%%\n" \
+    "$symbol" \
+    "$(printf "%${filled}s" | tr ' ' '=')" \
+    "$capacity"
+}
+
+while xsetroot -name "$(get_time);$(get_battery) | $(get_weekname) | $(get_date) "
 do
   sleep 60
 done &
 exec dwm
 ```
+> [!TIP]
+>
+> I've used this _bash function_ style to avoid patch conflicting.
+> It's a bit larger but an easy copy+paste also...
 - use `bar height` for changing, well, the bar height (you can
   reset it by defining `user_bh` as `0` in `config.def.h`)
