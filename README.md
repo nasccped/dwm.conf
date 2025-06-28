@@ -181,7 +181,7 @@ get_battery() {
 
 while xsetroot -name "$(get_time);$(get_battery) | $(get_weekname) | $(get_date) "
 do
-  sleep 60
+  sleep 5
 done &
 exec dwm
 ```
