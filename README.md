@@ -158,6 +158,14 @@ get_battery() {
   local maxbars=4
   local capacity=$(cat /sys/class/power_supply/BAT*/capacity)
   local filled=$((capacity * maxbars / 100))
+  local bat_content=""
+  for b in 0 25 50 75; do
+    if [[ $capacity -gt $b ]]; then
+      bat_content+="="
+    else
+      bat_content+=" "
+    fi
+  done
   local symbol=""
   case "$(cat /sys/class/power_supply/BAT*/status)" in
     D*) symbol="-";;
@@ -165,9 +173,9 @@ get_battery() {
     *) symbol="?";;
   esac
 
-  printf "%s [%-${maxbars}s] %3d%%\n" \
+  printf "%s[%s] %3d%%\n" \
     "$symbol" \
-    "$(printf "%${filled}s" | tr ' ' '=')" \
+    "$bat_content" \
     "$capacity"
 }
 
