@@ -189,5 +189,10 @@ exec dwm
 >
 > I've used this _bash function_ style to avoid patch conflicting.
 > It's a bit larger but an easy copy+paste also...
+>
+> ---
+
+> The function to get battery and datetime are common approaches for
+> linux based systems. You can change it to fit your favorite tools!
 - use `bar height` for changing, well, the bar height (you can
   reset it by defining `user_bh` as `0` in `config.def.h`)
