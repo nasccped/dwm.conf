@@ -9,7 +9,7 @@ static const int user_bh            = 25;       /* 0 means that dwm will calcula
 static const int splitstatus        = 1;        /* 1 for split status items */
 static const char *splitdelim       = ";";      /* Character used for separating status */
 static const char *fonts[]          = { "Terminus:style=Bold:size=10", "monospace:size=10" };
-static const char dmenufont[]       = "Terminus:style=Bold:size=10";
+static const char dmenufont[]       = "";     /* dmenu font should be set in dmenu config.def.h >:^( */
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
