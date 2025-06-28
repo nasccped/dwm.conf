@@ -208,7 +208,7 @@ exec dwm
 > It's a bit larger but an easy copy+paste also...
 >
 > ---
-
+>
 > The function to get battery and datetime are common approaches for
 > linux based systems. You can change it to fit your favorite tools!
 - use `bar height` for changing, well, the bar height (you can
