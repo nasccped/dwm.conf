@@ -139,10 +139,17 @@ stxkbmap -layout br -variant abnt2
 
 Instead of define dmenu font in dwm source, I prefered to set it in
 dmenu source due to workflow/update reasons. If you prefer setting
-dmenu font in dwm source, just change this line in `config.def.h`:
+dmenu font in dwm source, just change these lines in `config.def.h`:
 
 ```c
-static const char dmenufont[] = /* Set your prefered font here... */;
+/* ~12: */ static const char dmenufont[] = /* Set your prefered font here... */;
+
+/*
+ * ...
+ */
+
+// remove the comment within the char array
+/* ~63: */ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, /* remove font set: "-fn", dmenufont, */ "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 ```
 
 ## Changes that I've made
