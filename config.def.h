@@ -8,7 +8,7 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const int user_bh            = 25;       /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
 static const int splitstatus        = 1;        /* 1 for split status items */
 static const char *splitdelim       = ";";      /* Character used for separating status */
-static const char *fonts[]          = { "Terminus:style=Bold:size=10" };
+static const char *fonts[]          = { "Terminus:style=Bold:size=10", "monospace:size=10" };
 static const char dmenufont[]       = "Terminus:style=Bold:size=10";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
