@@ -83,7 +83,7 @@ make clean && sudo make install # you should be a super user + set your password
 
 4. Add this to your `.xinitrc` (if it doesn't exists, create one):
 
-```txt
+```sh
 exec dwm
 ```
 
@@ -114,7 +114,7 @@ xrandr
 
 4. Set xrandr mode in `.xinitrc` before calling `dwm`:
 
-```txt
+```sh
 # the --output flag should receive the current screen being displayed
 # (it can differ from computer to computer)
 xrandr --output Virtual-1 --mode 1920x1080 --rate 60
@@ -126,7 +126,7 @@ The keyboard layout defined at Xorg client is different from the TTY
 layout. You'll need to set your keyboard-layout to Xorg client in
 `.xinitrc` too (`br-abnt2` in my case):
 
-```txt
+```sh
 stxkbmap -layout br -variant abnt2
 ```
 
@@ -158,7 +158,7 @@ dmenu font in dwm source, just change these lines in `config.def.h`:
 - use `alwayscenter` patch (center windows when floating)
 - use `splitstatus` for status root name spliting (mid + right). My
   personal rootname config (in `.xinitrc`) is:
-```txt
+```sh
 get_time() {
   date "+%H:%M"
 }
