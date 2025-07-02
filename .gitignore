@@ -3,3 +3,4 @@ dwm
 **/*.diff
 **/*.rej
 config.h
+**/*.orig
