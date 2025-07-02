@@ -36,9 +36,9 @@ and commands:
 - xorg
 - xorg-xinit
 
-I'm currently using the `Terminus:Bold` font, so you'll need it too:
-
-- terminus-font
+I'm currently using the [`Fixedsys Excelsior`](https://github.com/kika/fixedsys)
+font, so you'll may need it too. _(else, the dwm font will fallback
+until find some available one - default case: `monospace`)_
 
 > [!NOTE]
 >
