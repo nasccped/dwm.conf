@@ -135,7 +135,7 @@ stxkbmap -layout br -variant abnt2
 > If you don't know yours, you can google it (it's common to all
 > computers from the same country follow the same keyboard layout) 😉
 
-### Dmenu font
+#### Dmenu font
 
 Instead of define dmenu font in dwm source, I prefered to set it in
 dmenu source due to workflow/update reasons. If you prefer setting
