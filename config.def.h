@@ -9,7 +9,7 @@ static const int user_bh            = 25;       /* 0 means that dwm will calcula
 static const int splitstatus        = 1;        /* 1 for split status items */
 static const char *splitdelim       = ";";      /* Character used for separating status */
 static const char *fonts[]          = {
-	"bitocra13:style=Regular:size=13", // use bitocra font, else: (FALLBACK)
+	"Fixedsys Excelsior:style=Regular:pixelsize=16", // use this font, else: (FALLBACK)
 	"Terminus:style=Regular:size=10",
 	"monospace:size=10"
 };
