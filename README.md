@@ -177,7 +177,17 @@ get_battery() {
   echo "bat: $power_capacity% ($power_status)"
 }
 
-while xsetroot -name "$(get_time);$(get_battery) | $(get_weekname) | $(get_date) "
+get_disk() {
+	read -r _ _ used total _ _ <<< $(df -h | grep -w "/")
+	echo "disk: $used/$total"
+}
+
+get_mem() {
+  read -r _ total used _ _ _ <<< $(free -h | grep Mem)
+  echo "mem: $used/$total"
+}
+
+while xsetroot -name "$(get_time); $(get_disk) | $(get_mem) | $(get_battery) | $(get_weekname) | $(get_date) "
 do
   sleep 5
 done &
