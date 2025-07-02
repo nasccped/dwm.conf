@@ -172,28 +172,9 @@ get_date() {
 }
 
 get_battery() {
-  local maxbars=4
-  local capacity=$(cat /sys/class/power_supply/BAT*/capacity)
-  local filled=$((capacity * maxbars / 100))
-  local bat_content=""
-  for b in 0 25 50 75; do
-    if [[ $capacity -gt $b ]]; then
-      bat_content+="="
-    else
-      bat_content+=" "
-    fi
-  done
-  local symbol=""
-  case "$(cat /sys/class/power_supply/BAT*/status)" in
-    D*) symbol="-";;
-    C*) symbol="+";;
-    *) symbol="?";;
-  esac
-
-  printf "%s[%s] %3d%%\n" \
-    "$symbol" \
-    "$bat_content" \
-    "$capacity"
+  local power_capacity=$(cat /sys/class/power_supply/BAT*/capacity)
+  local power_status=$(cat /sys/class/power_supply/BAT*/status)
+  echo "bat: $power_capacity% ($power_status)"
 }
 
 while xsetroot -name "$(get_time);$(get_battery) | $(get_weekname) | $(get_date) "
