@@ -221,6 +221,32 @@ drw_rect(Drw *drw, int x, int y, unsigned int w, unsigned int h, int filled, int
 		XDrawRectangle(drw->dpy, drw->drawable, drw->gc, x, y, w - 1, h - 1);
 }
 
+/* full tag indicator draw function (it does almost the same as drw_rect, check the
+ * https://github.com/nasccped/dwm-fulltag-indicator) */
+void
+drw_fti(Drw *drw, int x_pos, int y_pos, unsigned int wid, unsigned int hei, const char *bg, const char *border)
+{
+	if (!drw || !drw->scheme)
+		return;
+	XSetForeground(drw->dpy, drw->gc, get_colorpixel(drw->dpy, bg));
+	XFillRectangle(drw->dpy, drw->drawable, drw->gc, x_pos, y_pos, wid, hei);
+	XSetForeground(drw->dpy, drw->gc, get_colorpixel(drw->dpy, border));
+	XDrawRectangle(drw->dpy, drw->drawable, drw->gc, x_pos, y_pos, wid - 1, hei - 1);
+}
+
+/* full tag indicator utility: convert a string hex to a valid X server color (unsigned long) */
+unsigned long
+get_colorpixel(Display *dpy, const char *hex)
+{
+	if (!dpy || !hex) return 0;
+	XColor color;
+	int screen = DefaultScreen(dpy);
+	Colormap cmap = DefaultColormap(dpy, screen);
+	if (!XParseColor(dpy, cmap, hex, &color)) return BlackPixel(dpy, screen);
+	if (!XAllocColor(dpy, cmap, &color)) return BlackPixel(dpy, screen);
+	return color.pixel;
+}
+
 int
 drw_text(Drw *drw, int x, int y, unsigned int w, unsigned int h, unsigned int lpad, const char *text, int invert)
 {

@@ -25,6 +25,19 @@ static const char *colors[][3]      = {
 	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
 };
 
+/* full tag indicator variables */
+static const int fti_top              = 1; /* 0 means bottom indicator                           */
+static const int fti_border           = 1; /* 0 means no border                                  */
+static const unsigned int fti_height  = 4; /* indicator height (as px)                           */
+static const unsigned int fti_ptop    = 0; /* top padding                                        */
+static const unsigned int fti_pbot    = 0; /* bottom padding                                     */
+static const unsigned int fti_plef    = 0; /* left padding                                       */
+static const unsigned int fti_prig    = 0; /* right padding                                      */
+static const char fti_color_nor[]     = "#222222"; /* indicator color (not selected tag)         */
+static const char fti_color_sel[]     = "#eeeeee"; /* indicator color (selected tag)             */
+static const char fti_color_nor_inv[] = "#bbbbbb"; /* inverse indicator color (not selected tag) */
+static const char fti_color_sel_inv[] = "#005577"; /* inverse indicator color (selected tag)     */
+
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 

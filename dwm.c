@@ -267,6 +267,9 @@ static Display *dpy;
 static Drw *drw;
 static Monitor *mons, *selmon;
 static Window root, wmcheckwin;
+static int fti_x, fti_y;                          /* full tag indicator x and y position                       */
+static int fti_wid;                               /* full tag indicator width (calculated at drawbar function) */
+static const char *fti_bg_color, *fti_bord_color; /* full tag indicator colors                                  */
 
 /* configuration, allows nested code to access above variables */
 #include "config.h"
@@ -720,11 +723,33 @@ drawbar(Monitor *m)
 		w = TEXTW(tags[i]);
 		drw_setscheme(drw, scheme[m->tagset[m->seltags] & 1 << i ? SchemeSel : SchemeNorm]);
 		drw_text(drw, x, 0, w, bh, lrpad / 2, tags[i], urg & 1 << i);
-		if (occ & 1 << i)
-			drw_rect(drw, x + boxw, 0, w - ( 2 * boxw + 1), boxw,
-			    m == selmon && selmon->sel && selmon->sel->tags & 1 << i,
-			    urg & 1 << i);
-
+		if (occ & 1 << i) {
+			// if negative space
+			if (0
+			|| (fti_plef + fti_prig >= w)
+			|| (fti_top && (fti_ptop + fti_height >= bh))
+			|| (!fti_top && (fti_pbot + fti_height >= bh))) {
+				x += w;
+				continue;
+			}
+			// set x position
+			fti_x = x + fti_plef;
+			// set width
+			fti_wid = w - fti_plef - fti_prig;
+			// set y position
+			fti_y = topbar
+				? fti_top ? m->wy - bh + fti_ptop : m->wy - fti_height - fti_pbot
+				: fti_top ? m->wy + fti_ptop : m->wy + bh - fti_height - fti_pbot;
+			// set colors for bg and border
+			fti_bg_color = (m == selmon && selmon->sel && selmon->sel->tags & 1 << i)
+				? ((urg & 1 << i) ? fti_color_sel_inv : fti_color_sel)
+				: ((urg & 1 << i) ? fti_color_nor_inv : fti_color_nor);
+			fti_bord_color = fti_border
+				? ((urg & 1 << i) ? fti_color_sel_inv : fti_color_sel)
+				: fti_bg_color;
+			// draw indicator
+			drw_fti(drw, fti_x, fti_y, fti_wid, fti_height, fti_bg_color, fti_bord_color);
+		}
 		x += w;
 	}
 	w = TEXTW(m->ltsymbol);

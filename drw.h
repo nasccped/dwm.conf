@@ -54,5 +54,9 @@ void drw_setscheme(Drw *drw, Clr *scm);
 void drw_rect(Drw *drw, int x, int y, unsigned int w, unsigned int h, int filled, int invert);
 int drw_text(Drw *drw, int x, int y, unsigned int w, unsigned int h, unsigned int lpad, const char *text, int invert);
 
+/* full tag indicator functions */
+void drw_fti(Drw *drw, int x_pos, int y_pos, unsigned int wid, unsigned int hei, const char *bg, const char *border);
+unsigned long get_colorpixel(Display *dpy, const char *hex);
+
 /* Map functions */
 void drw_map(Drw *drw, Window win, int x, int y, unsigned int w, unsigned int h);
